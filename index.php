@@ -35,15 +35,16 @@ if (!is_null($events['events'])) {     // Loop through each event
                  break; 
 
                  case 'video':                     
-                  $messageID = $event['message']['id']; 
-                // Create video file on server.                     
+                  $messageID = $event['message']['id'];                   
                   $fileID = $event['message']['id'];                     
                   $response = $bot->getMessageContent($fileID);                     
                   $fileName = 'linebot.mp4';                     
                   $file = fopen($fileName, 'w');                     
                   fwrite($file, $response->getRawBody()); 
                   $respMessage = 'Hello, your video ID is '. $messageID; 
+                  break; 
 
+                  
                   case 'audio':                     
                    $messageID = $event['message']['id']; 
                      // Create audio file on server.                     
