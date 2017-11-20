@@ -69,7 +69,7 @@ if (!is_null($events['events'])) {     // Loop through each event
             
             $httpClient = new CurlHTTPClient($channel_token);                      
             $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));                       
-            $textMessageBuilder = new TextMessageBuilder($event['message']['type'] + $respMessage);                       
+            $textMessageBuilder = new TextMessageBuilder($event['message']['type'].' - '. $respMessage);                       
             $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
         } 
     } 
