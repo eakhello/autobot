@@ -29,8 +29,36 @@ if (!is_null($events['events'])) {     // Loop through each event
                  $respMessage = 'Hello, your image ID is '. $messageID; 
                  break; 
 
+                 case 'sticker':                     
+                 $messageID = $event['message']['packageId'];                  
+                 $respMessage = 'Hello, your Sticker Package ID is '. $messageID; 
+                 break; 
+
+                 case 'video':                     
+                  $messageID = $event['message']['id']; 
+                // Create video file on server.                     
+                  $fileID = $event['message']['id'];                     
+                  $response = $bot->getMessageContent($fileID);                     
+                  $fileName = 'linebot.mp4';                     
+                  $file = fopen($fileName, 'w');                     
+                  fwrite($file, $response->getRawBody()); 
+                  $respMessage = 'Hello, your video ID is '. $messageID; 
+
+                  case 'audio':                     
+                   $messageID = $event['message']['id']; 
+                     // Create audio file on server.                     
+                    $fileID = $event['message']['id'];                     
+                    $response = $bot->getMessageContent($fileID);                     
+                    $fileName = 'linebot.m4a';                     
+                    $file = fopen($fileName, 'w');                     
+                    fwrite($file, $response->getRawBody()); 
+                  
+                    // Reply message                     
+                    $respMessage = 'Hello, your audio ID is '. $messageID; 
+                    break;
+
                  default:                     
-                  $respMessage = 'Please send image only'; 
+                  $respMessage = 'Please send xxx only'; 
                  break; 
 
             }
