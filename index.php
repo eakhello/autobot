@@ -45,17 +45,21 @@ if (!is_null($events['events'])) {     // Loop through each event
                   break; 
 
                   case 'audio':                     
-                //    $messageID = $event['message']['id']; 
-                //      // Create audio file on server.                     
-                //     $fileID = $event['message']['id'];                     
-                //     $response = $bot->getMessageContent($fileID);                     
-                //     $fileName = 'linebot.m4a';                     
-                //     $file = fopen($fileName, 'w');                     
-                //     fwrite($file, $response->getRawBody()); 
+                   $messageID = $event['message']['id']; 
+                     // Create audio file on server.                     
+                    $fileID = $event['message']['id'];                     
+                    $response = $bot->getMessageContent($fileID);                     
+                    $fileName = 'linebot.m4a';                     
+                    $file = fopen($fileName, 'w');                     
+                    fwrite($file, $response->getRawBody()); 
                   
-                //     // Reply message                     
-                //     $respMessage = 'Hello, your audio ID is '. $messageID; 
-                $respMessage = '5555 Audio';
+                    // Reply message                     
+                    $respMessage = 'Hello, your audio ID is '. $messageID; 
+                    break;
+
+                    case 'location':                     
+                     $address = $event['message']['address'];                    
+                     $respMessage = 'Hello, your address is '. $address; 
                     break;
 
                  default:                     
