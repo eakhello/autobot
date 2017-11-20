@@ -51,10 +51,11 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $response = $bot->getMessageContent($fileID);                     
                     $fileName = 'linebot.m4a';                     
                     $file = fopen($fileName, 'w');                     
-                    fwrite($file, $response->getRawBody()); 
-                  
-                    // Reply message                     
+                    fwrite($file, $response->getRawBody());                  
                     $respMessage = 'Hello, your audio ID is '. $messageID; 
+
+                    $textMessageBuilder = new TextMessageBuilder($respMessage);             
+                    $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
                     break;
 
                     case 'location':                     
@@ -68,10 +69,10 @@ if (!is_null($events['events'])) {     // Loop through each event
 
             }
             
-            $httpClient = new CurlHTTPClient($channel_token);                      
-            $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));                       
-            $textMessageBuilder = new TextMessageBuilder($respMessage);                       
-            $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
+            // $httpClient = new CurlHTTPClient($channel_token);                      
+            // $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));                       
+            // $textMessageBuilder = new TextMessageBuilder($respMessage);                       
+            // $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
         } 
     } 
 } 
