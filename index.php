@@ -1,9 +1,12 @@
-<?php require_once('./vendor/autoload.php'); 
+<?php 
+require_once('./vendor/autoload.php'); 
 //  if (ini_get('active')== ''){
 //     ini_set('active','on');
 //  }
 
- ini_set('active','on');
+if (!ini_get('active')) {
+    ini_set('active', 'on');
+}
 
 // Namespace 
 use \LINE\LINEBot\HTTPClient\CurlHTTPClient; 
