@@ -32,7 +32,7 @@ if (!is_null($events['events'])) {     // Loop through each event
                 $respMessage = 'Love you lady.'; 
                 break;             
                 case 'img':
-                $typeresponse = 'img'
+                $typeresponse = 'img';
                 $originalContentUrl = 'https://olymptrade-promo.com/yahoo-news/v/th/17kapook2/images/6.jpg'; 
                 $previewImageUrl =  'https://olymptrade-promo.com/yahoo-news/v/th/17kapook2/images/6.jpg';              
                 break;  
