@@ -41,7 +41,7 @@ if (!is_null($events['events'])) {     // Loop through each event
             $ask = $event['message']['text']; 
             $appointments = explode(',', $event['message']['text']) ;
             
-            if (($OnSystem == 'on') || ($ask == 'on'))
+            if (($OnSystem == 'on') || (strtolower($ask) == 'on'))
             {
             if(count($appointments) == 2) {
                 $typeresponse = 'txt';  
@@ -76,7 +76,6 @@ if (!is_null($events['events'])) {     // Loop through each event
                     );
                     $statement = $connection->prepare('UPDATE flagactive SET active=:active'); 
                     $statement->execute($params);
-
                     $typeresponse = 'txt';                 
                     $respMessage = 'บอท หยุดทำงาน!'; 
                     break;  
