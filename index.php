@@ -1,6 +1,9 @@
 <?php require_once('./vendor/autoload.php'); 
  session_start();
- $_SESSION["active"] = "on";
+ if ($_SESSION["active"] == ''){
+    $_SESSION["active"] = "on";
+ }
+ 
 // Namespace 
 use \LINE\LINEBot\HTTPClient\CurlHTTPClient; 
 use \LINE\LINEBot; 
