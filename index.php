@@ -6,7 +6,7 @@ use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use \LINE\LINEBot; 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder; 
 use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
- 
+$OnSystem = 'on';
 $channel_token = '7Ief0P/yJzty4DMy+Qw0ybqIQEeT+w38s+iQ+Cf8btBiFQyElMd7a0sKD8JLbsv1RIO0XshvZ44EgTXuk/w31V1THkqSpQtdq7+SurKEK4u6SXX1E4ogT6dt6QcT5BtfXODNoIJuPhtpMLZdGZOGhwdB04t89/1O/w1cDnyilFU='; 
 $channel_secret = 'e44033a80aed821ccecff6ab0df784d4'; 
  
@@ -70,12 +70,22 @@ if (!is_null($events['events'])) {     // Loop through each event
             else{
                 switch(strtolower($ask)) {  
                     case 'off':
-                    $OnSystem = 'off';
+                    $params = array(
+                        'active' => 'off',
+                    );
+                    $statement = $connection->prepare('UPDATE flagactive SET active=:active'); 
+                    $statement->execute($params);
+
                     $typeresponse = 'txt';                 
                     $respMessage = 'บอท หยุดทำงาน!'; 
                     break;  
                     case 'on':
-                    $OnSystem = 'on';
+                     $params = array(
+                        'active' => 'on',
+                    );
+                    $statement = $connection->prepare('UPDATE flagactive SET active=:active'); 
+                    $statement->execute($params);
+
                     $typeresponse = 'txt';                 
                     $respMessage = 'บอททำงาน!'; 
                     break;            
