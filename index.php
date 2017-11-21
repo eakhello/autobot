@@ -1,5 +1,6 @@
 <?php require_once('./vendor/autoload.php'); 
- 
+ session_start();
+ $_SESSION["active"] = "on";
 // Namespace 
 use \LINE\LINEBot\HTTPClient\CurlHTTPClient; 
 use \LINE\LINEBot; 
@@ -9,6 +10,8 @@ use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
 $channel_token = '7Ief0P/yJzty4DMy+Qw0ybqIQEeT+w38s+iQ+Cf8btBiFQyElMd7a0sKD8JLbsv1RIO0XshvZ44EgTXuk/w31V1THkqSpQtdq7+SurKEK4u6SXX1E4ogT6dt6QcT5BtfXODNoIJuPhtpMLZdGZOGhwdB04t89/1O/w1cDnyilFU='; 
 $channel_secret = 'e44033a80aed821ccecff6ab0df784d4'; 
  
+if ($_SESSION["active"] == 'on')
+{
 // Get message from Line API 
 $content = file_get_contents('php://input'); 
 $events = json_decode($content, true); 
@@ -49,7 +52,17 @@ if (!is_null($events['events'])) {     // Loop through each event
             }
 
             else{
-                switch(strtolower($ask)) {             
+                switch(strtolower($ask)) {  
+                    case 'off':
+                    $_SESSION["active"] = 'off';
+                    $typeresponse = 'txt';                 
+                    $respMessage = 'บอท หยุดทำงาน!'; 
+                    break;  
+                    case 'on':
+                    $_SESSION["active"] = 'on';
+                    $typeresponse = 'txt';                 
+                    $respMessage = 'บอททำงาน!'; 
+                    break;            
                     case 'm':
                     $typeresponse = 'txt';                 
                     $respMessage = 'What sup man. Go away!'; 
@@ -64,6 +77,16 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $previewImageUrl =  'https://lh3.googleusercontent.com/SdWCiU5B8Hq4cYGe1SWf3TJZtOwbBhZqbUVudIQ7EVghl9AP8920jgp1SkaBqZP6juTS13b2jC5PwCqJw0SCXfo9i33uRfLmbOAMDofOMpZlPAJHzf9JcyVHxBC2MnIRleUW3OSwR0L_up08cl-7jGhzn2meaDeKL7dfaKCn72pNusdXQUAxz9QirQWxs_YRDSSPzUuHy7BpUnLbSKV_IpsfGqjWD_ro-A8e3VdstGIT3aRG8RmUhr--Cs5TefRlK2LlLihJPfdEj7K7CUtwEFwUkFuChfP5oiJUMixOroQWdemtqTbOU7Z9YbG7FDcY9treU3uKXaDKzpZ93boYn38niqpHCz8rFUeOAX0R0rwKH85s-_sXShl9EcPf2eDuFrTBrz65UlffG9COvnz8VF5c7SzeCcWHn4rSi9sUiaUfh5poBAzq4oPK2ZZImORQsZlLan2mNOHhLyX4CHKzzPZqJoDoZMKtEPShCD1nAWub612z7rih-7Vt-rmMPkwQdyYnFYog7g_uPFkR6ewTq46OLsFx79Sc--Nm0xMRodirC76my0Ypuh8AZzei8HKy9FXlrnw8RrKvPuuJVuC6ro-l9DcTV9gdnmrQL1sr_A=w678-h508-no';              
                     break;  
     
+                    case 'ชัช':
+                    $typeresponse = 'txt';
+                    $respMessage = 'ชัชชัย เป็นคนดี และ หล่อมาก';
+                    break;
+                    case 'คอง':
+                    $typeresponse = 'txt';
+                    $respMessage = 'คองเหี้ยมาก';
+                    break;
+
+
                     default: 
                      $typeresponse = 'none';                
                      $respMessage = 'What is your sex? M or F or Img to view image or 12.00,House keeping. to save to db'; 
@@ -153,6 +176,7 @@ if (!is_null($events['events'])) {     // Loop through each event
         }
     } 
     } 
+}
 } 
  
 echo "OK"; 
