@@ -193,7 +193,8 @@ if (!is_null($events['events'])) {     // Loop through each event
             $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
             
             if ($typeresponse == 'txt'){
-                $textMessageBuilder = new TextMessageBuilder($event['message']['type'].' - '. $respMessage);                          
+                //$textMessageBuilder = new TextMessageBuilder($event['message']['type'].' - '. $respMessage);   
+                $textMessageBuilder = new TextMessageBuilder($respMessage);                        
             }
             elseif ($typeresponse == 'img'){
                 $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
