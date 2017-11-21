@@ -26,8 +26,7 @@ if($result !== false && $result->rowCount() >0) {
     }
 }
 
-if ($OnSystem == 'on')
-{
+
 // Get message from Line API 
 $content = file_get_contents('php://input'); 
 $events = json_decode($content, true); 
@@ -42,6 +41,8 @@ if (!is_null($events['events'])) {     // Loop through each event
             $ask = $event['message']['text']; 
             $appointments = explode(',', $event['message']['text']) ;
             
+            if (($OnSystem == 'on') || ($ask == 'on'))
+            {
             if(count($appointments) == 2) {
                 $typeresponse = 'txt';  
                 $host = 'ec2-50-16-228-232.compute-1.amazonaws.com';
@@ -118,6 +119,7 @@ if (!is_null($events['events'])) {     // Loop through each event
                      $respMessage = 'What is your sex? M or F or Img to view image or 12.00,House keeping. to save to db'; 
                     break; 
             } 
+        }
     
             if ($event['type'] == 'follow') {
                 $typeresponse = 'txt';
@@ -200,7 +202,6 @@ if (!is_null($events['events'])) {     // Loop through each event
             
             $response = $bot->replyMessage($replyToken, $textMessageBuilder) ;
         }
-    } 
     } 
 }
 } 
