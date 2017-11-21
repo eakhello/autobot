@@ -21,28 +21,74 @@ if (!is_null($events['events'])) {     // Loop through each event
             // Get replyToken                       
             $replyToken = $event['replyToken'];  
             $ask = $event['message']['text']; 
+            $appointments = explode(',', $event['message']['text']) ;
+            
+            if(count($appointments) == 2) {
+                $typeresponse = 'txt';  
+                $host = 'ec2-50-16-228-232.compute-1.amazonaws.com';
+                $dbname = 'd6cm71n101ita9'; 
+                $user = 'dvyuqfuldvzebl';
+                $pass = '4c662a23211ff72c4b3eff5e78729e8e3c9e78956e22806f4e65a989fa386306';
+                $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass); 
 
-            switch(strtolower($ask)) {             
-                case 'm':
-                $typeresponse = 'txt';                 
-                $respMessage = 'What sup man. Go away!'; 
-                break;             
-                case 'f':
-                $typeresponse = 'txt';                 
-                $respMessage = 'Love you lady.'; 
-                break;             
-                case 'img':
-                $typeresponse = 'img';
-                $originalContentUrl = 'https://lh3.googleusercontent.com/SdWCiU5B8Hq4cYGe1SWf3TJZtOwbBhZqbUVudIQ7EVghl9AP8920jgp1SkaBqZP6juTS13b2jC5PwCqJw0SCXfo9i33uRfLmbOAMDofOMpZlPAJHzf9JcyVHxBC2MnIRleUW3OSwR0L_up08cl-7jGhzn2meaDeKL7dfaKCn72pNusdXQUAxz9QirQWxs_YRDSSPzUuHy7BpUnLbSKV_IpsfGqjWD_ro-A8e3VdstGIT3aRG8RmUhr--Cs5TefRlK2LlLihJPfdEj7K7CUtwEFwUkFuChfP5oiJUMixOroQWdemtqTbOU7Z9YbG7FDcY9treU3uKXaDKzpZ93boYn38niqpHCz8rFUeOAX0R0rwKH85s-_sXShl9EcPf2eDuFrTBrz65UlffG9COvnz8VF5c7SzeCcWHn4rSi9sUiaUfh5poBAzq4oPK2ZZImORQsZlLan2mNOHhLyX4CHKzzPZqJoDoZMKtEPShCD1nAWub612z7rih-7Vt-rmMPkwQdyYnFYog7g_uPFkR6ewTq46OLsFx79Sc--Nm0xMRodirC76my0Ypuh8AZzei8HKy9FXlrnw8RrKvPuuJVuC6ro-l9DcTV9gdnmrQL1sr_A=w678-h508-no'; 
-                $previewImageUrl =  'https://lh3.googleusercontent.com/SdWCiU5B8Hq4cYGe1SWf3TJZtOwbBhZqbUVudIQ7EVghl9AP8920jgp1SkaBqZP6juTS13b2jC5PwCqJw0SCXfo9i33uRfLmbOAMDofOMpZlPAJHzf9JcyVHxBC2MnIRleUW3OSwR0L_up08cl-7jGhzn2meaDeKL7dfaKCn72pNusdXQUAxz9QirQWxs_YRDSSPzUuHy7BpUnLbSKV_IpsfGqjWD_ro-A8e3VdstGIT3aRG8RmUhr--Cs5TefRlK2LlLihJPfdEj7K7CUtwEFwUkFuChfP5oiJUMixOroQWdemtqTbOU7Z9YbG7FDcY9treU3uKXaDKzpZ93boYn38niqpHCz8rFUeOAX0R0rwKH85s-_sXShl9EcPf2eDuFrTBrz65UlffG9COvnz8VF5c7SzeCcWHn4rSi9sUiaUfh5poBAzq4oPK2ZZImORQsZlLan2mNOHhLyX4CHKzzPZqJoDoZMKtEPShCD1nAWub612z7rih-7Vt-rmMPkwQdyYnFYog7g_uPFkR6ewTq46OLsFx79Sc--Nm0xMRodirC76my0Ypuh8AZzei8HKy9FXlrnw8RrKvPuuJVuC6ro-l9DcTV9gdnmrQL1sr_A=w678-h508-no';              
-                break;  
+                $params = array(  
+                    'time' => $appointments[0],
+                    'content' => $appointments[1], 
+                ) ;
+ 
+                $statement = $connection->prepare(" INSERT INTO appointments (time, content) VALUES (:time,:content)");
+                $result = $statement->execute($params) ; 
 
-                default: 
-                $typeresponse = 'txt';                
-                $respMessage = 'What is your sex? M or F or Img to view image'; 
-                break; 
-        } 
+                $respMessage = 'Your appointment has saved.';
+            // }
+            // else
+            // {
+            //     $respMessage = 'You can send appointment like this "12.00,House keeping." '; 
+            // }
 
+            }
+
+            else{
+                switch(strtolower($ask)) {             
+                    case 'm':
+                    $typeresponse = 'txt';                 
+                    $respMessage = 'What sup man. Go away!'; 
+                    break;             
+                    case 'f':
+                    $typeresponse = 'txt';                 
+                    $respMessage = 'Love you lady.'; 
+                    break;             
+                    case 'img':
+                    $typeresponse = 'img';
+                    $originalContentUrl = 'https://lh3.googleusercontent.com/SdWCiU5B8Hq4cYGe1SWf3TJZtOwbBhZqbUVudIQ7EVghl9AP8920jgp1SkaBqZP6juTS13b2jC5PwCqJw0SCXfo9i33uRfLmbOAMDofOMpZlPAJHzf9JcyVHxBC2MnIRleUW3OSwR0L_up08cl-7jGhzn2meaDeKL7dfaKCn72pNusdXQUAxz9QirQWxs_YRDSSPzUuHy7BpUnLbSKV_IpsfGqjWD_ro-A8e3VdstGIT3aRG8RmUhr--Cs5TefRlK2LlLihJPfdEj7K7CUtwEFwUkFuChfP5oiJUMixOroQWdemtqTbOU7Z9YbG7FDcY9treU3uKXaDKzpZ93boYn38niqpHCz8rFUeOAX0R0rwKH85s-_sXShl9EcPf2eDuFrTBrz65UlffG9COvnz8VF5c7SzeCcWHn4rSi9sUiaUfh5poBAzq4oPK2ZZImORQsZlLan2mNOHhLyX4CHKzzPZqJoDoZMKtEPShCD1nAWub612z7rih-7Vt-rmMPkwQdyYnFYog7g_uPFkR6ewTq46OLsFx79Sc--Nm0xMRodirC76my0Ypuh8AZzei8HKy9FXlrnw8RrKvPuuJVuC6ro-l9DcTV9gdnmrQL1sr_A=w678-h508-no'; 
+                    $previewImageUrl =  'https://lh3.googleusercontent.com/SdWCiU5B8Hq4cYGe1SWf3TJZtOwbBhZqbUVudIQ7EVghl9AP8920jgp1SkaBqZP6juTS13b2jC5PwCqJw0SCXfo9i33uRfLmbOAMDofOMpZlPAJHzf9JcyVHxBC2MnIRleUW3OSwR0L_up08cl-7jGhzn2meaDeKL7dfaKCn72pNusdXQUAxz9QirQWxs_YRDSSPzUuHy7BpUnLbSKV_IpsfGqjWD_ro-A8e3VdstGIT3aRG8RmUhr--Cs5TefRlK2LlLihJPfdEj7K7CUtwEFwUkFuChfP5oiJUMixOroQWdemtqTbOU7Z9YbG7FDcY9treU3uKXaDKzpZ93boYn38niqpHCz8rFUeOAX0R0rwKH85s-_sXShl9EcPf2eDuFrTBrz65UlffG9COvnz8VF5c7SzeCcWHn4rSi9sUiaUfh5poBAzq4oPK2ZZImORQsZlLan2mNOHhLyX4CHKzzPZqJoDoZMKtEPShCD1nAWub612z7rih-7Vt-rmMPkwQdyYnFYog7g_uPFkR6ewTq46OLsFx79Sc--Nm0xMRodirC76my0Ypuh8AZzei8HKy9FXlrnw8RrKvPuuJVuC6ro-l9DcTV9gdnmrQL1sr_A=w678-h508-no';              
+                    break;  
+    
+                    default: 
+                    $typeresponse = 'txt';                
+                    $respMessage = 'What is your sex? M or F or Img to view image'; 
+                    break; 
+            } 
+    
+            if ($event['type'] == 'follow') {
+                $typeresponse = 'txt';
+                // Get replyToken
+                $replyToken = $event['replyToken'];
+                
+              // Greeting
+                $respMessage = 'Thanks you. I try to be your best friend.';        
+            }
+    
+            if ($event['type'] == 'join') {
+                $typeresponse = 'txt';
+                // Get replyToken
+                $replyToken = $event['replyToken'];   
+                // Greeting 
+                $respMessage = 'Hi guys, I am MR.Robot. You can ask me everything.';
+            }
+            }
+           
+           
             // switch($event['message']['type']) {                  
             //     case 'text':                       
             //     // Reply message                       
