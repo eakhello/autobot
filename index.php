@@ -23,18 +23,22 @@ if (!is_null($events['events'])) {     // Loop through each event
             $ask = $event['message']['text']; 
 
             switch(strtolower($ask)) {             
-                case 'm':                 
+                case 'm':
+                $typeresponse = 'txt';                 
                 $respMessage = 'What sup man. Go away!'; 
                 break;             
-                case 'f':                 
+                case 'f':
+                $typeresponse = 'txt';                 
                 $respMessage = 'Love you lady.'; 
                 break;             
                 case 'img':
+                $typeresponse = 'img'
                 $originalContentUrl = 'https://olymptrade-promo.com/yahoo-news/v/th/17kapook2/images/6.jpg'; 
                 $previewImageUrl =  'https://olymptrade-promo.com/yahoo-news/v/th/17kapook2/images/6.jpg';              
                 break;  
 
-                default:                 
+                default: 
+                $typeresponse = 'txt';                
                 $respMessage = 'What is your sex? M or F'; 
                 break; 
         } 
@@ -91,10 +95,15 @@ if (!is_null($events['events'])) {     // Loop through each event
             $httpClient = new CurlHTTPClient($channel_token);                      
             $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
             
-            $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
+            if ($typeresponse == 'txt'){
+                $textMessageBuilder = new TextMessageBuilder($event['message']['type'].' - '. $respMessage);                          
+            }
+            elseif ($typeresponse == 'img'){
+                $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
+            }
+            
             $response = $bot->replyMessage($replyToken, $textMessageBuilder) ;
-           // $textMessageBuilder = new TextMessageBuilder($event['message']['type'].' - '. $respMessage);                       
-           // $response = $bot->replyMessage($replyToken, $textMessageBuilder); 
+           
         } 
     } 
 } 
