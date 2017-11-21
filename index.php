@@ -33,13 +33,13 @@ if (!is_null($events['events'])) {     // Loop through each event
                 break;             
                 case 'img':
                 $typeresponse = 'img';
-                $originalContentUrl = 'https://olymptrade-promo.com/yahoo-news/v/th/17kapook2/images/6.jpg'; 
-                $previewImageUrl =  'https://olymptrade-promo.com/yahoo-news/v/th/17kapook2/images/6.jpg';              
+                $originalContentUrl = 'https://cdn.pixabay.com/photo/2017/11/15/11/45/gift-2951734_960_720.jpg'; 
+                $previewImageUrl =  'https://cdn.pixabay.com/photo/2017/11/15/11/45/gift-2951734_960_720.jpg';              
                 break;  
 
                 default: 
                 $typeresponse = 'txt';                
-                $respMessage = 'What is your sex? M or F'; 
+                $respMessage = 'What is your sex? M or F or Img to view image'; 
                 break; 
         } 
 
