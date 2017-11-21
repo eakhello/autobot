@@ -107,11 +107,58 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $typeresponse = 'txt';
                     $respMessage = 'ชัชชัย เป็นคนดี และ หล่อมาก';
                     break;
+                    case 'ลิง':
+                    $typeresponse = 'txt';
+                    $respMessage = 'พ่อมึงหรอ.. ไอ้คนพิมพ์';
+                    break;
+                    case 'เอก':
+                    $typeresponse = 'txt';
+                    $respMessage = 'เอก เป็นคนดี และ หล่อมาก';
+                    break;
                     case 'คอง':
                     $typeresponse = 'txt';
-                    $respMessage = 'คองเหี้ยมาก';
+                    $respMessage = 'คองเหี้ยมาก บ้ากาม';
                     break;
-
+                    case 'ตู่':
+                    $typeresponse = 'txt';
+                    $respMessage = 'เลวเหี้ย เหมือนไอ้คอง';
+                    break;
+                    case 'รักษ์':
+                    $typeresponse = 'txt';
+                    $respMessage = 'รักษ์เอาดะ ตัณหากลับ';
+                    break;
+                    case 'เขี้ยว':
+                    $typeresponse = 'txt';
+                    $respMessage = 'เขี้ยวเหี้ยสุดๆ มีเมียหนาวตลอดปี';
+                    break;
+                    case 'ออย':
+                    $typeresponse = 'txt';
+                    $respMessage = 'ถ้าเป็นออยหญิง ก็อีปี๊ป ถ้าเป็นชายก็ออยก้อย';
+                    break;
+                    case 'ทันย่า':
+                    $typeresponse = 'txt';
+                    $respMessage = 'โชคดีมาก มีผัวเป็นคนดีสุด ๆ';
+                    break;
+                    case 'เปรม':
+                    $typeresponse = 'txt';
+                    $respMessage = 'อ่อนๆ ตามพี่คองเขาว่าไว้';
+                    break;
+                    case 'ตุ้ย':
+                    $typeresponse = 'txt';
+                    $respMessage = 'ไร้น้ำยา';
+                    break;
+                    case 'เติ้ง':
+                    $typeresponse = 'txt';
+                    $respMessage = 'หนาวจัด จนฟันออกปาก';
+                    break;
+                    case 'ก้อย':
+                    $typeresponse = 'txt';
+                    $respMessage = 'เป็นเมียออย';
+                    break;
+                    case 'สัน':
+                    $typeresponse = 'txt';
+                    $respMessage = 'ไอ้ปลาค๊าฟ...';
+                    break;
 
                     default: 
                      $typeresponse = 'none';                
