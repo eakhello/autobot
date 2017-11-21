@@ -159,6 +159,10 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $typeresponse = 'txt';
                     $respMessage = 'ไอ้ปลาค๊าฟ...';
                     break;
+                    case 'ตุ๊ด':
+                    $typeresponse = 'txt';
+                    $respMessage = 'มีเมียเป็นน้องตลกชื่อดัง พ่อชื่อเราะ อีกชื่อคือลิเก';
+                    break;
 
                     default: 
                      $typeresponse = 'none';                
