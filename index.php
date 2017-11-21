@@ -1,9 +1,8 @@
 <?php require_once('./vendor/autoload.php'); 
- session_start();
- if ($_SESSION["active"] == ''){
-    $_SESSION["active"] = "onc";
+ if (ini_get('active')== ''){
+    ini_set('active','on');
  }
- 
+
 // Namespace 
 use \LINE\LINEBot\HTTPClient\CurlHTTPClient; 
 use \LINE\LINEBot; 
@@ -13,7 +12,7 @@ use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
 $channel_token = '7Ief0P/yJzty4DMy+Qw0ybqIQEeT+w38s+iQ+Cf8btBiFQyElMd7a0sKD8JLbsv1RIO0XshvZ44EgTXuk/w31V1THkqSpQtdq7+SurKEK4u6SXX1E4ogT6dt6QcT5BtfXODNoIJuPhtpMLZdGZOGhwdB04t89/1O/w1cDnyilFU='; 
 $channel_secret = 'e44033a80aed821ccecff6ab0df784d4'; 
  
-if ($_SESSION["active"] == 'on')
+if (ini_get('active') == 'on')
 {
 // Get message from Line API 
 $content = file_get_contents('php://input'); 
@@ -57,12 +56,12 @@ if (!is_null($events['events'])) {     // Loop through each event
             else{
                 switch(strtolower($ask)) {  
                     case 'off':
-                    $_SESSION["active"] = 'off';
+                    ini_set('active','off');
                     $typeresponse = 'txt';                 
                     $respMessage = 'บอท หยุดทำงาน!'; 
                     break;  
                     case 'on':
-                    $_SESSION["active"] = 'on';
+                    ini_set('active','on');
                     $typeresponse = 'txt';                 
                     $respMessage = 'บอททำงาน!'; 
                     break;            
