@@ -171,7 +171,8 @@ if (!is_null($events['events'])) {     // Loop through each event
                     //  $respMessage = 'What is your sex? M or F or Img to view image or 12.00,House keeping. to save to db'; 
                     $typeresponse = 'txt';
                    $sql = sprintf("select textout from compare_message where textin ='" + $event['message']['text'] +"' ");
-                    $result = $connection->query($sql);
+                   $respMessage = "select textout from compare_message where textin ='" + $event['message']['text'] +"' "; 
+                   $result = $connection->query($sql);
                     if($result !== false && $result->rowCount() >0) {
                         foreach ($result as $row) {
                          $respMessage = $row['textout'];
