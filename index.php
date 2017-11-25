@@ -47,7 +47,7 @@ if (!is_null($events['events'])) {     // Loop through each event
                 if ($event['message']['type'] == 'sticker'){
                     $typeresponse = 'txt';  
                     $messageID = $event['message']['packageId'];                  
-                    $respMessage = 'Hello, your Sticker Package ID is '. $messageID.' Stricker ID :'.$event['message']['strickerId']; 
+                    $respMessage = 'Hello, your Sticker Package ID is '. $messageID.' Stricker ID :'.$event['message']['stickerId']; 
                    // break;
                 }                     
                      
