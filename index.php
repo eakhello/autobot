@@ -170,9 +170,9 @@ if (!is_null($events['events'])) {     // Loop through each event
                     //  $respMessage = 'What is your sex? M or F or Img to view image or 12.00,House keeping. to save to db'; 
                     $typeresponse = 'txt';
                     $params = array(
-                        'textin' => strtolower($ask) ,
+                        'textin' => 'A' ,
                     ); 
-                    $result = $connection->query('select textout from compare_message where textin =:textin') ; 
+                    $result = $connection->query("select textout from compare_message where textin ='" +strtolower($ask) + "'") ; 
                    if($result !== null) {
                       // echo $result->rowCount(); 
                       $respMessage = '55555';
