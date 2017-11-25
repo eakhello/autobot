@@ -44,6 +44,13 @@ if (!is_null($events['events'])) {     // Loop through each event
             
             if (($OnSystem == 'open') || (strtolower($ask) == 'open'))
             {
+                if ($event['message']['type'] == 'sticker'){
+                    $typeresponse = 'txt';  
+                    $messageID = $event['message']['packageId'];                  
+                    $respMessage = 'Hello, your Sticker Package ID is '. $messageID; 
+                    break;
+                }                     
+                     
             if(count($appointments) == 2) {
                 $typeresponse = 'txt';  
                 $host = 'ec2-50-16-228-232.compute-1.amazonaws.com';
