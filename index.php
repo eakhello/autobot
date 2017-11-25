@@ -119,7 +119,7 @@ if (!is_null($events['events'])) {     // Loop through each event
                              break;
                             }
                         else{
-                            $typeresponse = 'none';
+                           // $typeresponse = 'none';
                             //$respMessage ="Not found";
                         }
                          
