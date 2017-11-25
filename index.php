@@ -179,7 +179,8 @@ if (!is_null($events['events'])) {     // Loop through each event
                        //$respMessage = $result['textout'];
                    } 
                    else{
-                    $typeresponse = 'none'; 
+                    $respMessage = '5555566';
+                    $typeresponse = 'text'; 
                    }
 
                     break; 
