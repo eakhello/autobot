@@ -175,8 +175,8 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $result = $connection->query("select textout from compare_message where textin ='" +strtolower($ask) + "'") ; 
                    if($result !== null) {
                       // echo $result->rowCount(); 
-                      $respMessage = '55555';
-                       //$respMessage = $result['textout'];
+                      //$respMessage = '55555';
+                       $respMessage = $result['textout'];
                    } 
                    else
                    {
