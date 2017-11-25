@@ -173,11 +173,12 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $result = $connection->query($sql);
                     if($result !== false && $result->rowCount() >0) {
                         foreach ($result as $row) {
-                         if (strpos(strtolower($ask), $row['textin']) !== false) {
+                         if (strstr(strtolower($ask), $row['textin'])) {
                              $respMessage = $row['textout'];
+                             break;
                             }
                         else{
-                            $respMessage ="Not found";
+                            //$respMessage ="Not found";
                         }
                          
                         }
