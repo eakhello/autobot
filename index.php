@@ -46,8 +46,12 @@ if (!is_null($events['events'])) {     // Loop through each event
             {
                 if ($event['message']['type'] == 'sticker'){
                     $typeresponse = 'txt';  
-                    $messageID = $event['message']['packageId'];                  
-                    $respMessage = 'Hello, your Sticker Package ID is '. $messageID.' Stricker ID :'.$event['message']['stickerId']; 
+                    $messageID = $event['message']['packageId']; 
+                    if ($messageID == 1 && $event['message']['stickerId'] == 100) {
+                        //$respMessage = 'Hello, your Sticker Package ID is '. $messageID.' Stricker ID :'.$event['message']['stickerId'];
+                        $respMessage = 'ขำเหี้ยไรมึง';
+                    }                 
+                     
                    // break;
                 }                     
                      
