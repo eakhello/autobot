@@ -167,18 +167,25 @@ if (!is_null($events['events'])) {     // Loop through each event
                     //  $typeresponse = 'none';                
                     //  $respMessage = 'What is your sex? M or F or Img to view image or 12.00,House keeping. to save to db'; 
                     $typeresponse = 'txt';
-                    $sql = "select textout from compare_message where textin like '%".strtolower($ask)."%'";
+                   // $sql = "select textout from compare_message where textin like '%".strtolower($ask)."%'";
+                   $sql = "select textin,textout from compare_message";
                     $respMessage = $sql;
                     $result = $connection->query($sql);
                     if($result !== false && $result->rowCount() >0) {
                         foreach ($result as $row) {
-                         $respMessage = $row['textout'];
+                         if (strpos(strtolower($ask), $row['textin']) !== false) {
+                             $respMessage = $row['textout'];
+                            }
+                        else{
+                            $respMessage ="Not found";
+                        }
+                         
                         }
                     }
                    else
                    {
                     //$respMessage = $sql;
-                    $typeresponse = 'txt'; 
+                    $typeresponse = 'none'; 
                    }
 
                     break; 
