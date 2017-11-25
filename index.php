@@ -171,12 +171,12 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $typeresponse = 'text';
                     $params = array(
                         'textin' => strtolower($ask) ,
-                    );
-                   
+                    ); 
                     $result = $connection->query("select textout where textin =:textin") ;  
                    if($result !== null) {
                       // echo $result->rowCount(); 
-                       $respMessage = $result['textout'];
+                      $respMessage = '55555';
+                       //$respMessage = $result['textout'];
                    } 
                    else{
                     $typeresponse = 'none'; 
