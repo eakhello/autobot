@@ -121,10 +121,7 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $typeresponse = 'txt';
                     $respMessage = 'คองเหี้ยมาก บ้ากาม..';
                     break;
-                    case 'ตู่':
-                    $typeresponse = 'txt';
-                    $respMessage = 'เลวเหี้ย เหมือนไอ้คอง';
-                    break;
+            
                     case 'รักษ์':
                     $typeresponse = 'txt';
                     $respMessage = 'รักษ์เอาดะ ตัณหากลับ';
