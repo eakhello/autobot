@@ -71,7 +71,7 @@ if (!is_null($events['events'])) {     // Loop through each event
 
             else{
                 switch(strtolower($ask)) {  
-                    case 'off':
+                    case 'close':
                     $params = array(
                         'active' => 'off',
                     );
@@ -80,7 +80,7 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $typeresponse = 'txt';                 
                     $respMessage = 'บอท หยุดทำงาน!'; 
                     break;  
-                    case 'on':
+                    case 'open':
                      $params = array(
                         'active' => 'on',
                     );
@@ -104,72 +104,12 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $originalContentUrl = 'https://lh3.googleusercontent.com/SdWCiU5B8Hq4cYGe1SWf3TJZtOwbBhZqbUVudIQ7EVghl9AP8920jgp1SkaBqZP6juTS13b2jC5PwCqJw0SCXfo9i33uRfLmbOAMDofOMpZlPAJHzf9JcyVHxBC2MnIRleUW3OSwR0L_up08cl-7jGhzn2meaDeKL7dfaKCn72pNusdXQUAxz9QirQWxs_YRDSSPzUuHy7BpUnLbSKV_IpsfGqjWD_ro-A8e3VdstGIT3aRG8RmUhr--Cs5TefRlK2LlLihJPfdEj7K7CUtwEFwUkFuChfP5oiJUMixOroQWdemtqTbOU7Z9YbG7FDcY9treU3uKXaDKzpZ93boYn38niqpHCz8rFUeOAX0R0rwKH85s-_sXShl9EcPf2eDuFrTBrz65UlffG9COvnz8VF5c7SzeCcWHn4rSi9sUiaUfh5poBAzq4oPK2ZZImORQsZlLan2mNOHhLyX4CHKzzPZqJoDoZMKtEPShCD1nAWub612z7rih-7Vt-rmMPkwQdyYnFYog7g_uPFkR6ewTq46OLsFx79Sc--Nm0xMRodirC76my0Ypuh8AZzei8HKy9FXlrnw8RrKvPuuJVuC6ro-l9DcTV9gdnmrQL1sr_A=w678-h508-no'; 
                     $previewImageUrl =  'https://lh3.googleusercontent.com/SdWCiU5B8Hq4cYGe1SWf3TJZtOwbBhZqbUVudIQ7EVghl9AP8920jgp1SkaBqZP6juTS13b2jC5PwCqJw0SCXfo9i33uRfLmbOAMDofOMpZlPAJHzf9JcyVHxBC2MnIRleUW3OSwR0L_up08cl-7jGhzn2meaDeKL7dfaKCn72pNusdXQUAxz9QirQWxs_YRDSSPzUuHy7BpUnLbSKV_IpsfGqjWD_ro-A8e3VdstGIT3aRG8RmUhr--Cs5TefRlK2LlLihJPfdEj7K7CUtwEFwUkFuChfP5oiJUMixOroQWdemtqTbOU7Z9YbG7FDcY9treU3uKXaDKzpZ93boYn38niqpHCz8rFUeOAX0R0rwKH85s-_sXShl9EcPf2eDuFrTBrz65UlffG9COvnz8VF5c7SzeCcWHn4rSi9sUiaUfh5poBAzq4oPK2ZZImORQsZlLan2mNOHhLyX4CHKzzPZqJoDoZMKtEPShCD1nAWub612z7rih-7Vt-rmMPkwQdyYnFYog7g_uPFkR6ewTq46OLsFx79Sc--Nm0xMRodirC76my0Ypuh8AZzei8HKy9FXlrnw8RrKvPuuJVuC6ro-l9DcTV9gdnmrQL1sr_A=w678-h508-no';              
                     break;  
-    
-                    case 'ชัช':
-                    $typeresponse = 'txt';
-                    $respMessage = 'ชัชชัย เป็นคนดี และ หล่อมาก';
-                    break;
-                    case 'ลิง':
-                    $typeresponse = 'txt';
-                    $respMessage = 'พ่อมึงหรอ.. ไอ้คนพิมพ์';
-                    break;
-                    case 'เอก':
-                    $typeresponse = 'txt';
-                    $respMessage = 'เอก เป็นคนดี และ หล่อมาก';
-                    break;
-                    case 'คอง':
-                    $typeresponse = 'txt';
-                    $respMessage = 'คองเหี้ยมาก บ้ากาม..';
-                    break;
-            
-                    case 'รักษ์':
-                    $typeresponse = 'txt';
-                    $respMessage = 'รักษ์เอาดะ ตัณหากลับ';
-                    break;
-                    case 'เขี้ยว':
-                    $typeresponse = 'txt';
-                    $respMessage = 'เขี้ยวเหี้ยสุดๆ มีเมียหนาวตลอดปี';
-                    break;
-                    case 'ออย':
-                    $typeresponse = 'txt';
-                    $respMessage = 'ถ้าเป็นออยหญิง ก็อีปี๊ป ถ้าเป็นชายก็ออยก้อย';
-                    break;
-                    case 'ทันย่า':
-                    $typeresponse = 'txt';
-                    $respMessage = 'โชคดีมาก มีผัวเป็นคนดีสุด ๆ';
-                    break;
-                    case 'เปรม':
-                    $typeresponse = 'txt';
-                    $respMessage = 'อ่อนๆ ตามพี่คองเขาว่าไว้';
-                    break;
-                    case 'ตุ้ย':
-                    $typeresponse = 'txt';
-                    $respMessage = 'ไร้น้ำยา';
-                    break;
-                    case 'เติ้ง':
-                    $typeresponse = 'txt';
-                    $respMessage = 'หนาวจัด จนฟันออกปาก';
-                    break;
-                    case 'ก้อย':
-                    $typeresponse = 'txt';
-                    $respMessage = 'เป็นเมียออย';
-                    break;
-                    case 'สัน':
-                    $typeresponse = 'txt';
-                    $respMessage = 'ไอ้ปลาค๊าฟ...';
-                    break;
-                    case 'ตุ๊ด':
-                    $typeresponse = 'txt';
-                    $respMessage = 'มีเมียเป็นน้องตลกชื่อดัง พ่อชื่อเราะ อีกชื่อคือลิเก';
-                    break;
-
+     
                     default: 
-                    //  $typeresponse = 'none';                
-                    //  $respMessage = 'What is your sex? M or F or Img to view image or 12.00,House keeping. to save to db'; 
+                     
                     $typeresponse = 'txt';
                    // $sql = "select textout from compare_message where textin like '%".strtolower($ask)."%'";
                    $sql = "select textin,textout from compare_message";
-                    $respMessage = $sql;
                     $result = $connection->query($sql);
                     if($result !== false && $result->rowCount() >0) {
                         foreach ($result as $row) {
@@ -178,6 +118,7 @@ if (!is_null($events['events'])) {     // Loop through each event
                              break;
                             }
                         else{
+                            $typeresponse = 'none';
                             //$respMessage ="Not found";
                         }
                          
