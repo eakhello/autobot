@@ -18,6 +18,7 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
 $sql = sprintf(
     "SELECT active FROM flagactive");
+
    $result = $connection->query($sql);
 
 if($result !== false && $result->rowCount() >0) {
@@ -169,13 +170,13 @@ if (!is_null($events['events'])) {     // Loop through each event
                     //  $typeresponse = 'none';                
                     //  $respMessage = 'What is your sex? M or F or Img to view image or 12.00,House keeping. to save to db'; 
                     $typeresponse = 'txt';
-    
-                    $result = $connection->query("select textout from compare_message where textin ='" +strtolower($ask) + "'") ; 
-                   if($result !== null) {
-                   //  $respMessage = $result->rowCount(); 
-                      $respMessage = '5555511';
-                      // $respMessage = $result['textout'];
-                   } 
+                   $sql = sprintf("select textout from compare_message where textin ='" +strtolower($ask) + "'");
+                    $result = $connection->query($sql) ; 
+                    if($result !== false && $result->rowCount() >0) {
+                        foreach ($result as $row) {
+                         $respMessage = $row['textout'];
+                        }
+                    }
                    else
                    {
                     $respMessage = '5555566';
