@@ -42,7 +42,7 @@ if (!is_null($events['events'])) {     // Loop through each event
             $ask = $event['message']['text']; 
             $appointments = explode(',', $event['message']['text']) ;
             
-            if (($OnSystem == 'on') || (strtolower($ask) == 'on'))
+            if (($OnSystem == 'open') || (strtolower($ask) == 'open'))
             {
             if(count($appointments) == 2) {
                 $typeresponse = 'txt';  
@@ -79,7 +79,8 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $statement->execute($params);
                     $typeresponse = 'txt';                 
                     $respMessage = 'บอท หยุดทำงาน!'; 
-                    break;  
+                    break; 
+
                     case 'open':
                      $params = array(
                         'active' => 'on',
@@ -98,15 +99,15 @@ if (!is_null($events['events'])) {     // Loop through each event
                     case 'f':
                     $typeresponse = 'txt';                 
                     $respMessage = 'Love you lady.'; 
-                    break;             
+                    break;    
+
                     case 'img':
                     $typeresponse = 'img';
                     $originalContentUrl = 'https://lh3.googleusercontent.com/SdWCiU5B8Hq4cYGe1SWf3TJZtOwbBhZqbUVudIQ7EVghl9AP8920jgp1SkaBqZP6juTS13b2jC5PwCqJw0SCXfo9i33uRfLmbOAMDofOMpZlPAJHzf9JcyVHxBC2MnIRleUW3OSwR0L_up08cl-7jGhzn2meaDeKL7dfaKCn72pNusdXQUAxz9QirQWxs_YRDSSPzUuHy7BpUnLbSKV_IpsfGqjWD_ro-A8e3VdstGIT3aRG8RmUhr--Cs5TefRlK2LlLihJPfdEj7K7CUtwEFwUkFuChfP5oiJUMixOroQWdemtqTbOU7Z9YbG7FDcY9treU3uKXaDKzpZ93boYn38niqpHCz8rFUeOAX0R0rwKH85s-_sXShl9EcPf2eDuFrTBrz65UlffG9COvnz8VF5c7SzeCcWHn4rSi9sUiaUfh5poBAzq4oPK2ZZImORQsZlLan2mNOHhLyX4CHKzzPZqJoDoZMKtEPShCD1nAWub612z7rih-7Vt-rmMPkwQdyYnFYog7g_uPFkR6ewTq46OLsFx79Sc--Nm0xMRodirC76my0Ypuh8AZzei8HKy9FXlrnw8RrKvPuuJVuC6ro-l9DcTV9gdnmrQL1sr_A=w678-h508-no'; 
                     $previewImageUrl =  'https://lh3.googleusercontent.com/SdWCiU5B8Hq4cYGe1SWf3TJZtOwbBhZqbUVudIQ7EVghl9AP8920jgp1SkaBqZP6juTS13b2jC5PwCqJw0SCXfo9i33uRfLmbOAMDofOMpZlPAJHzf9JcyVHxBC2MnIRleUW3OSwR0L_up08cl-7jGhzn2meaDeKL7dfaKCn72pNusdXQUAxz9QirQWxs_YRDSSPzUuHy7BpUnLbSKV_IpsfGqjWD_ro-A8e3VdstGIT3aRG8RmUhr--Cs5TefRlK2LlLihJPfdEj7K7CUtwEFwUkFuChfP5oiJUMixOroQWdemtqTbOU7Z9YbG7FDcY9treU3uKXaDKzpZ93boYn38niqpHCz8rFUeOAX0R0rwKH85s-_sXShl9EcPf2eDuFrTBrz65UlffG9COvnz8VF5c7SzeCcWHn4rSi9sUiaUfh5poBAzq4oPK2ZZImORQsZlLan2mNOHhLyX4CHKzzPZqJoDoZMKtEPShCD1nAWub612z7rih-7Vt-rmMPkwQdyYnFYog7g_uPFkR6ewTq46OLsFx79Sc--Nm0xMRodirC76my0Ypuh8AZzei8HKy9FXlrnw8RrKvPuuJVuC6ro-l9DcTV9gdnmrQL1sr_A=w678-h508-no';              
                     break;  
      
-                    default: 
-                     
+                    default:     
                     $typeresponse = 'txt';
                    // $sql = "select textout from compare_message where textin like '%".strtolower($ask)."%'";
                    $sql = "select textin,textout from compare_message";
@@ -126,7 +127,6 @@ if (!is_null($events['events'])) {     // Loop through each event
                     }
                    else
                    {
-                    //$respMessage = $sql;
                     $typeresponse = 'none'; 
                    }
 
