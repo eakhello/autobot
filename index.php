@@ -179,7 +179,7 @@ if (!is_null($events['events'])) {     // Loop through each event
                     }
                    else
                    {
-                    $respMessage = '5555566';
+                    $respMessage = $sql;
                     $typeresponse = 'txt'; 
                    }
 
