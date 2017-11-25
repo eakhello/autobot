@@ -48,10 +48,10 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $typeresponse = 'txt';  
                     $messageID = $event['message']['packageId'];                  
                     $respMessage = 'Hello, your Sticker Package ID is '. $messageID; 
-                    break;
+                   // break;
                 }                     
                      
-            if(count($appointments) == 2) {
+            else if(count($appointments) == 2) {
                 $typeresponse = 'txt';  
                 $host = 'ec2-50-16-228-232.compute-1.amazonaws.com';
                 $dbname = 'd6cm71n101ita9'; 
