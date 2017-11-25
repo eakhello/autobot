@@ -168,19 +168,20 @@ if (!is_null($events['events'])) {     // Loop through each event
                     default: 
                     //  $typeresponse = 'none';                
                     //  $respMessage = 'What is your sex? M or F or Img to view image or 12.00,House keeping. to save to db'; 
-                    $typeresponse = 'text';
+                    $typeresponse = 'txt';
                     $params = array(
                         'textin' => strtolower($ask) ,
                     ); 
-                    $result = $connection->query("select textout from compare_message where textin =:textin") ;  
+                    $result = $connection->query('select textout from compare_message where textin =:textin') ; 
                    if($result !== null) {
                       // echo $result->rowCount(); 
                       $respMessage = '55555';
                        //$respMessage = $result['textout'];
                    } 
-                   else{
+                   else
+                   {
                     $respMessage = '5555566';
-                    $typeresponse = 'text'; 
+                    $typeresponse = 'txt'; 
                    }
 
                     break; 
