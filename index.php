@@ -73,7 +73,7 @@ if (!is_null($events['events'])) {     // Loop through each event
                 switch(strtolower($ask)) {  
                     case 'close':
                     $params = array(
-                        'active' => 'off',
+                        'active' => 'close',
                     );
                     $statement = $connection->prepare('UPDATE flagactive SET active=:active'); 
                     $statement->execute($params);
@@ -83,7 +83,7 @@ if (!is_null($events['events'])) {     // Loop through each event
 
                     case 'open':
                      $params = array(
-                        'active' => 'on',
+                        'active' => 'open',
                     );
                     $statement = $connection->prepare('UPDATE flagactive SET active=:active'); 
                     $statement->execute($params);
