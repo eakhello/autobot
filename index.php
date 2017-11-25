@@ -118,7 +118,7 @@ if (!is_null($events['events'])) {     // Loop through each event
                     break;
                     case 'คอง':
                     $typeresponse = 'txt';
-                    $respMessage = 'คองเหี้ยมาก บ้ากาม';
+                    $respMessage = 'คองเหี้ยมาก บ้ากาม..';
                     break;
                     case 'ตู่':
                     $typeresponse = 'txt';
@@ -172,7 +172,7 @@ if (!is_null($events['events'])) {     // Loop through each event
                     $params = array(
                         'textin' => strtolower($ask) ,
                     ); 
-                    $result = $connection->query("select textout where textin =:textin") ;  
+                    $result = $connection->query("select textout from compare_message where textin =:textin") ;  
                    if($result !== null) {
                       // echo $result->rowCount(); 
                       $respMessage = '55555';
